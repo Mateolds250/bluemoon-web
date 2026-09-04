@@ -2,7 +2,15 @@
 
 Sitio web para BlueMoon (joyas en oro, bisutería, joyas sobre pedido y perfumes originales de lujo), listo para publicarse gratis en **GitHub Pages** con un dominio propio comprado en **Namecheap**.
 
-Es un sitio estático (HTML/CSS/JS puro, sin backend ni base de datos), bilingüe (español/inglés) y con botones de pedido por WhatsApp.
+Es un sitio estático (HTML/CSS/JS puro, sin backend ni base de datos), bilingüe (español/inglés), con carrito de compras y botones de pedido por WhatsApp.
+
+## Novedades de esta versión
+
+- **Carrito de compras**: cada producto tiene un botón "Agregar al carrito". El ícono de carrito en el menú muestra cuántos artículos hay. Al finalizar, arma un solo mensaje de WhatsApp con todos los productos, cantidades y precios.
+- **WhatsApp real conectado**: los pedidos (carrito y botones directos) ya usan el número +57 310 508 6397.
+- **TikTok enlazado**: el ícono de TikTok del pie de página y el enlace "Síguenos en TikTok" ya apuntan a `tiktok.com/@bluemoon0016`.
+
+Si ya tenías el sitio subido a GitHub, en la sección **"Cómo actualizar el sitio en GitHub"** (más abajo) te digo exactamente qué archivos reemplazar.
 
 ## Estructura de archivos
 
@@ -12,10 +20,11 @@ joyas.html         Catálogo de joyas (oro, bisutería, sobre pedido)
 perfumes.html      Catálogo de perfumes (para ella, para él, unisex/nicho)
 nosotros.html      Historia y valores de la marca
 contacto.html      Formulario de contacto + WhatsApp
-css/styles.css     Todos los estilos (colores, tipografía, diseño)
-js/products.js     ← EDITA AQUÍ tu catálogo de productos y tu WhatsApp/correo
+css/styles.css     Todos los estilos (colores, tipografía, diseño, carrito)
+js/products.js     ← EDITA AQUÍ tu catálogo de productos, WhatsApp, correo y TikTok
 js/footer.js       Pie de página compartido por todas las páginas
 js/main.js         Menú, selector de idioma, botones de WhatsApp
+js/cart.js         Lógica del carrito de compras
 images/            Logo, favicon e íconos de productos (SVG editables)
 CNAME              Tu dominio propio (edítalo cuando lo compres)
 ```
@@ -92,7 +101,19 @@ Este sitio no tiene pasarela de pago ni carrito propio, porque GitHub Pages es h
 
 Si en el futuro quieres cobrar con tarjeta directamente en la página, se puede integrar un botón de pago (por ejemplo de PayU, Wompi o Stripe) sin cambiar de hosting — avísame cuando quieras dar ese paso.
 
-## 6. Ideas para seguir creciendo el sitio (marketing)
+## 6. Cómo actualizar el sitio en GitHub (si ya lo tenías publicado)
+
+Si ya subiste una versión anterior del sitio, reemplaza estos archivos en tu repositorio (los nombres son iguales, así que al subirlos se sobrescriben solos):
+
+1. **En la raíz del repositorio** (donde están tus `.html`): entra a `<> Code`, dale **Add file → Upload files** y arrastra los 5 archivos: `index.html`, `joyas.html`, `perfumes.html`, `nosotros.html`, `contacto.html`. Confirma con **Commit changes**.
+2. **Dentro de la carpeta `css`**: haz clic en la carpeta `css` para entrar en ella, luego **Add file → Upload files** y arrastra `styles.css`. Commit.
+3. **Dentro de la carpeta `js`**: haz clic en la carpeta `js`, luego **Add file → Upload files** y arrastra estos 4 archivos: `main.js`, `footer.js`, `products.js` y `cart.js` (este último es nuevo). Commit.
+
+Entrar primero a la carpeta y subir desde ahí evita el problema de que los archivos queden sueltos en la raíz.
+
+Espera 1-2 minutos (revisa la pestaña **Actions**) y refresca el sitio con Ctrl+Shift+R.
+
+## 7. Ideas para seguir creciendo el sitio (marketing)
 
 - Conecta Google Analytics o Meta Pixel para medir visitas y campañas de anuncios.
 - Agrega una sección de testimonios de clientes en `nosotros.html`.

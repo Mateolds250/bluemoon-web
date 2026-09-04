@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyas en Oro, Bisutería y Sobre Pedido — BlueMoon</title>
+<meta name="description" content="Joyas en oro 10k, 14k y 18k, bisutería fina bañada en oro y diseños de joyería sobre pedido, hechos a tu medida en BlueMoon.">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="lang-es">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><img src="images/logo-bluemoon.svg" alt="BlueMoon"></a>
+    <nav class="main-nav">
+      <a href="index.html"><span class="lang-es">Inicio</span><span class="lang-en">Home</span></a>
+      <a href="joyas.html"><span class="lang-es">Joyas</span><span class="lang-en">Jewelry</span></a>
+      <a href="perfumes.html"><span class="lang-es">Perfumes</span><span class="lang-en">Perfumes</span></a>
+      <a href="nosotros.html"><span class="lang-es">Nosotros</span><span class="lang-en">About</span></a>
+      <a href="contacto.html"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" aria-label="Cambiar idioma / Change language">EN</button>
+      <a href="contacto.html" class="btn btn-gold btn-small"><span class="lang-es">Contáctanos</span><span class="lang-en">Contact us</span></a>
+      <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding:80px 0 60px;">
+  <div class="container">
+    <span class="hero-eyebrow"><span class="lang-es">Colección</span><span class="lang-en">Collection</span></span>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);">
+      <span class="lang-es">Joyas en <em>oro</em>, bisutería y piezas <em>sobre pedido</em></span>
+      <span class="lang-en"><em>Gold</em> jewelry, costume pieces and <em>made-to-order</em> designs</span>
+    </h1>
+    <p class="lead">
+      <span class="lang-es">Cada pieza está pensada para durar toda la vida. Elige entre oro 10k, 14k y 18k, bisutería fina bañada en oro, o crea tu diseño único.</span>
+      <span class="lang-en">Every piece is made to last a lifetime. Choose 10k, 14k or 18k gold, fine gold-plated pieces, or create your own unique design.</span>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all"><span class="lang-es">Todas</span><span class="lang-en">All</span></button>
+      <button class="filter-btn" data-filter="oro"><span class="lang-es">Oro</span><span class="lang-en">Gold</span></button>
+      <button class="filter-btn" data-filter="bisuteria"><span class="lang-es">Bisutería</span><span class="lang-en">Costume</span></button>
+      <button class="filter-btn" data-filter="a-pedido"><span class="lang-es">Sobre pedido</span><span class="lang-en">Made-to-order</span></button>
+    </div>
+    <div class="product-grid" id="jewelry-grid"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-eyebrow"><span class="lang-es">Hecho a tu medida</span><span class="lang-en">Made for you</span></span>
+        <h2><span class="lang-es">¿Tienes una idea? La hacemos realidad</span><span class="lang-en">Have an idea? We'll bring it to life</span></h2>
+        <p style="color:var(--text-muted);">
+          <span class="lang-es">Anillos de compromiso, dijes personalizados, grabados y restauraciones. Cuéntanos qué imaginas y te enviamos una cotización sin compromiso.</span>
+          <span class="lang-en">Engagement rings, custom charms, engravings and restorations. Tell us what you have in mind and we'll send you a free quote.</span>
+        </p>
+        <a href="contacto.html" class="btn btn-gold" style="margin-top:10px;"><span class="lang-es">Solicitar diseño personalizado</span><span class="lang-en">Request a custom design</span></a>
+      </div>
+      <div class="about-media">
+        <img src="images/placeholder-custom.svg" alt="Diseño sobre pedido" style="max-width:220px;margin:0 auto;border-radius:10px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<a class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.02 3C9.4 3 4.02 8.37 4.02 15c0 2.4.7 4.6 1.92 6.47L4 29l7.73-1.93A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.63 28 15S22.65 3 16.02 3zm0 21.7c-1.98 0-3.83-.55-5.4-1.5l-.39-.23-4.6 1.15 1.18-4.48-.25-.4A9.63 9.63 0 0 1 6.3 15c0-5.35 4.36-9.7 9.72-9.7 5.36 0 9.72 4.35 9.72 9.7 0 5.36-4.36 9.7-9.72 9.7zm5.32-7.27c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.91-2.19-.24-.58-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/></svg>
+</a>
+
+<script src="js/products.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/main.js"></script>
+<script>
+  injectFooter();
+  renderGrid("#jewelry-grid", jewelryProducts);
+  reRenderOnLangChange("#jewelry-grid", () => {
+    const activeBtn = document.querySelector(".filter-btn.active");
+    const cat = activeBtn ? activeBtn.dataset.filter : "all";
+    return cat === "all" ? jewelryProducts : jewelryProducts.filter(i => i.category === cat);
+  });
+  initFilters(() => jewelryProducts, "#jewelry-grid");
+</script>
+</body>
+</html>

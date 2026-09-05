@@ -146,6 +146,18 @@ const perfumeProducts = [
   },
   // ---- PARA ÉL ----
   {
+    id: "carolina-herrera-212-men",
+    category: "el",
+    brand: "Carolina Herrera",
+    nameEs: "212 Men NYC",
+    nameEn: "212 Men NYC",
+    descEs: "Fresco y urbano, con acordes cítricos y amaderados. Un clásico neoyorquino imprescindible. 200ml.",
+    descEn: "Fresh and urban, with citrus and woody accords. An essential New York classic. 200ml.",
+    price: "$250.000 COP",
+    image: "images/carolina-herrera-212-men.jpg",
+    badge: "Nuevo"
+  },
+  {
     id: "dior-sauvage",
     category: "el",
     brand: "Dior",

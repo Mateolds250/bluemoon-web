@@ -211,6 +211,17 @@
       "price": "Consultar disponibilidad",
       "image": "images/placeholder-perfume.svg",
       "badge": "Exclusivo · Nicho"
+    },
+    {
+      "id": "giorgio-armani-acqua-di-gio",
+      "category": "el",
+      "nameEs": "Giorgio Armani Acqua Di Gio",
+      "nameEn": "Giorgio Armani Acqua Di Gio",
+      "descEs": "",
+      "descEn": "",
+      "price": "300000",
+      "image": "images/giorgio-armani-acqua-di-gio.jpg",
+      "brand": "carolina herrera"
     }
   ],
   "contact": {

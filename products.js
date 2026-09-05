@@ -254,5 +254,5 @@ const CONTACT = {
   email: "contacto@bluemoon.com", // <-- REEMPLAZA por tu correo real si es otro
   city: "Medellín, Colombia",
   tiktok: "https://www.tiktok.com/@bluemoon0016"
-  Instagram:https:"//www.instagram.com/bluemoon_oficial1/"
+  Instagram:"https://www.instagram.com/bluemoon_oficial1/"
 };

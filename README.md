@@ -6,6 +6,8 @@ Es un sitio estático (HTML/CSS/JS puro, sin backend ni base de datos), bilingü
 
 ## Novedades de esta versión
 
+- **Panel de administración (`admin.html`)**: ahora puedes agregar, editar o eliminar productos —con foto incluida— desde un formulario, sin tocar código ni subir archivos a mano. Ver la sección **"0. Panel de administración"** más abajo.
+- **Catálogo en `data/products.json`**: los productos ya no viven escritos dentro de `js/products.js`; ahora viven en un archivo de datos (`data/products.json`) que tanto tú (a mano) como el panel de administración pueden editar.
 - **Carrito de compras**: cada producto tiene un botón "Agregar al carrito". El ícono de carrito en el menú muestra cuántos artículos hay. Al finalizar, arma un solo mensaje de WhatsApp con todos los productos, cantidades y precios.
 - **WhatsApp real conectado**: los pedidos (carrito y botones directos) ya usan el número +57 310 508 6397.
 - **TikTok enlazado**: el ícono de TikTok del pie de página y el enlace "Síguenos en TikTok" ya apuntan a `tiktok.com/@bluemoon0016`.
@@ -15,32 +17,57 @@ Si ya tenías el sitio subido a GitHub, en la sección **"Cómo actualizar el si
 ## Estructura de archivos
 
 ```
-index.html        Página de inicio
-joyas.html         Catálogo de joyas (oro, bisutería, sobre pedido)
-perfumes.html      Catálogo de perfumes (para ella, para él, unisex/nicho)
-nosotros.html      Historia y valores de la marca
-contacto.html      Formulario de contacto + WhatsApp
-css/styles.css     Todos los estilos (colores, tipografía, diseño, carrito)
-js/products.js     ← EDITA AQUÍ tu catálogo de productos, WhatsApp, correo y TikTok
-js/footer.js       Pie de página compartido por todas las páginas
-js/main.js         Menú, selector de idioma, botones de WhatsApp
-js/cart.js         Lógica del carrito de compras
-images/            Logo, favicon e íconos de productos (SVG editables)
-CNAME              Tu dominio propio (edítalo cuando lo compres)
+index.html          Página de inicio
+joyas.html           Catálogo de joyas (oro, bisutería, sobre pedido)
+perfumes.html        Catálogo de perfumes (para ella, para él, unisex/nicho)
+nosotros.html        Historia y valores de la marca
+contacto.html        Formulario de contacto + WhatsApp
+admin.html           ← Panel de administración: agrega/edita/elimina productos con fotos
+data/products.json   ← El catálogo (productos, precios, fotos, WhatsApp, TikTok) como datos puros
+css/styles.css       Todos los estilos (colores, tipografía, diseño, carrito)
+js/products.js       Carga data/products.json — normalmente no necesitas tocarlo
+js/footer.js         Pie de página compartido por todas las páginas
+js/main.js           Menú, selector de idioma, botones de WhatsApp
+js/cart.js           Lógica del carrito de compras
+images/              Logo, favicon, íconos genéricos y fotos reales de productos
+CNAME                Tu dominio propio (edítalo cuando lo compres)
 ```
+
+## 0. Panel de administración — la forma más fácil de agregar productos
+
+`admin.html` es una página privada (no aparece en el menú del sitio) donde llenas un formulario —foto, nombre, precio, descripción— y con un clic se publica directamente en tu catálogo. Es la forma recomendada de agregar contenido de aquí en adelante.
+
+**Paso 1 — Crea tu token de acceso de GitHub (una sola vez):**
+
+1. Entra a [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new) con tu cuenta de GitHub.
+2. **Token name:** escribe algo como "BlueMoon Admin".
+3. **Expiration:** elige la opción más larga disponible.
+4. **Repository access:** "Only select repositories" → elige tu repositorio (`bluemoon-web`).
+5. **Permissions → Repository permissions → Contents** → cámbialo a **Read and write**.
+6. Baja y haz clic en **Generate token**. Copia el token (empieza con `github_pat_...`) — GitHub solo lo muestra una vez.
+
+**Paso 2 — Usa el panel:**
+
+1. Abre `tudominio.com/admin.html` (o `tu-usuario.github.io/bluemoon-web/admin.html` mientras no tengas dominio propio).
+2. Pega tu token, confirma el repositorio (ya viene prellenado) y haz clic en **"Conectar y cargar catálogo"**.
+3. Llena el formulario: elige Joya o Perfume, sube la foto, escribe nombre, descripción y precio, y haz clic en **"Publicar producto"**.
+4. Espera 1-2 minutos y refresca tu sitio (Ctrl+Shift+R) — ahí aparecerá el producto nuevo, ya con su foto.
+
+El token se guarda solo en el navegador donde lo pegaste (nunca se sube a ningún lado). Si lo pierdes o quieres invalidarlo, bórralo desde la misma página de GitHub donde lo creaste — no afecta al sitio, solo dejarías de poder publicar cambios hasta crear uno nuevo. Como es una página sin contraseña de por sí, evita compartir el enlace `admin.html` públicamente; sin el token nadie puede publicar cambios de todas formas, pero es buena práctica mantenerlo solo para ti.
 
 ## 1. Cómo editar el contenido
 
-**Para agregar/quitar productos (joyas o perfumes):** abre `js/products.js`. Ahí encontrarás dos listas (`jewelryProducts` y `perfumeProducts`) con instrucciones dentro del mismo archivo. Cada producto es un bloque con nombre, descripción, precio e imagen en español e inglés. No necesitas tocar el HTML.
+**Para agregar/quitar/editar productos (joyas o perfumes):** usa `admin.html` (ver sección 0, arriba) — es lo más simple. Si prefieres editar a mano, abre `data/products.json` en GitHub y copia/pega un bloque `{ ... }` completo (con su coma final) dentro de `"jewelry"` o `"perfume"`, cambiando los datos. Es un archivo JSON, así que cuidado con no dejar comas de más ni de menos.
 
-**Para cambiar tu número de WhatsApp y correo:** en el mismo archivo `js/products.js`, al final, edita el objeto `CONTACT`:
+**Para cambiar tu número de WhatsApp, correo o TikTok:** en `data/products.json`, edita el bloque `"contact"` al final del archivo:
 
-```js
-const CONTACT = {
-  whatsappNumber: "573000000000", // tu número real, con indicativo de país, sin espacios
-  email: "contacto@bluemoon.com",
-  city: "Medellín, Colombia"
-};
+```json
+"contact": {
+  "whatsappNumber": "573000000000",
+  "email": "contacto@bluemoon.com",
+  "city": "Medellín, Colombia",
+  "tiktok": "https://www.tiktok.com/@tuusuario"
+}
 ```
 
 **Para cambiar textos generales** (títulos, historia, etc.): edita directamente el archivo `.html` de la página correspondiente. Cada texto tiene dos versiones:
@@ -52,9 +79,9 @@ const CONTACT = {
 
 Edita ambas versiones para mantener el sitio bilingüe.
 
-**Para agregar tus propias fotos:** cuando tengas fotos reales de tus joyas o perfumes, súbelas a la carpeta `images/` (formato .jpg o .png, ideal 800x600px o mayor) y cambia la ruta `image: "images/..."` de cada producto en `js/products.js`.
+**Para agregar tus propias fotos sin el panel de administración:** súbelas a la carpeta `images/` (formato .jpg o .png, ideal 800x600px o mayor) y cambia la ruta `"image": "images/..."` del producto correspondiente en `data/products.json`.
 
-**Para cambiar el logo:** reemplaza `images/logo-bluemoon.svg` por tu logo definitivo, o pide que te generen uno nuevo.
+**Para cambiar el logo:** reemplaza `images/logo-bluemoon.png` por tu logo definitivo, o pide que te generen uno nuevo.
 
 ## 2. Publicar el sitio en GitHub Pages (gratis)
 
@@ -103,11 +130,13 @@ Si en el futuro quieres cobrar con tarjeta directamente en la página, se puede 
 
 ## 6. Cómo actualizar el sitio en GitHub (si ya lo tenías publicado)
 
-Si ya subiste una versión anterior del sitio, reemplaza estos archivos en tu repositorio (los nombres son iguales, así que al subirlos se sobrescriben solos):
+Esta versión agrega el panel de administración y mueve el catálogo a un archivo de datos nuevo. Sube estos archivos a tu repositorio (los nombres repetidos se sobrescriben solos):
 
-1. **En la raíz del repositorio** (donde están tus `.html`): entra a `<> Code`, dale **Add file → Upload files** y arrastra los 5 archivos: `index.html`, `joyas.html`, `perfumes.html`, `nosotros.html`, `contacto.html`. Confirma con **Commit changes**.
-2. **Dentro de la carpeta `css`**: haz clic en la carpeta `css` para entrar en ella, luego **Add file → Upload files** y arrastra `styles.css`. Commit.
-3. **Dentro de la carpeta `js`**: haz clic en la carpeta `js`, luego **Add file → Upload files** y arrastra estos 4 archivos: `main.js`, `footer.js`, `products.js` y `cart.js` (este último es nuevo). Commit.
+1. **En la raíz del repositorio** (donde están tus `.html`): entra a `<> Code`, dale **Add file → Upload files** y arrastra `admin.html` (nuevo). Confirma con **Commit changes**.
+2. **Crea la carpeta `data`**: en "Add file → Upload files", arrastra el archivo `products.json` que está dentro de la carpeta `data` de este zip — al arrastrarlo con su ruta completa (`data/products.json`) GitHub crea la carpeta sola; si tu navegador no conserva la ruta, sube `products.json` a la raíz y luego edítalo (ícono de lápiz) cambiando el nombre a `data/products.json` para moverlo a su carpeta. Commit.
+3. **Dentro de la carpeta `js`**: haz clic en la carpeta `js` para entrar en ella, luego **Add file → Upload files** y arrastra `products.js` (sobrescribe el anterior). Commit.
+
+**Importante:** con esta actualización, el catálogo ya NO se edita en `js/products.js` sino en `data/products.json` (o, más fácil, desde `admin.html`). Los demás archivos (`index.html`, `joyas.html`, `perfumes.html`, `nosotros.html`, `contacto.html`, `css/styles.css`, `js/main.js`, `js/cart.js`, `js/footer.js`) no cambiaron en esta versión, así que no es necesario volver a subirlos.
 
 Entrar primero a la carpeta y subir desde ahí evita el problema de que los archivos queden sueltos en la raíz.
 

@@ -42,6 +42,9 @@ function applyLang(lang) {
   const btn = document.querySelector(".lang-toggle");
   if (btn) btn.textContent = lang === "es" ? "EN" : "ES";
   saveLang(lang);
+  // Avisa a otros módulos (carrito, grillas de productos) que el idioma
+  // ya cambió, para que puedan volver a dibujar su contenido.
+  document.dispatchEvent(new CustomEvent("bluemoon:langchange", { detail: { lang: lang } }));
 }
 
 function initLanguage() {
@@ -91,7 +94,8 @@ function renderProductCard(item, lang) {
   const desc = lang === "en" ? item.descEn : item.descEs;
   const brandRow = item.brand ? `<div class="product-brand">${item.brand}</div>` : "";
   const badge = item.badge ? `<span class="product-badge">${item.badge}</span>` : "";
-  const orderText = lang === "en" ? "Order via WhatsApp" : "Pedir por WhatsApp";
+  const addLabel = lang === "en" ? "Add to cart" : "Agregar al carrito";
+  const directLabel = lang === "en" ? "Or order directly via WhatsApp" : "O pedir directo por WhatsApp";
   const waMessage = lang === "en"
     ? `Hello BlueMoon, I'm interested in: ${item.nameEn}`
     : `Hola BlueMoon, estoy interesado/a en: ${item.nameEs}`;
@@ -108,8 +112,9 @@ function renderProductCard(item, lang) {
         <p>${desc}</p>
         <div class="product-footer">
           <span class="product-price">${item.price}</span>
-          <a class="btn btn-whatsapp btn-small" href="${buildWhatsappLink(waMessage)}" target="_blank" rel="noopener">${orderText}</a>
+          <button type="button" class="btn btn-gold btn-small" onclick="addToCart('${item.id}')">${addLabel}</button>
         </div>
+        <a class="product-direct-link" href="${buildWhatsappLink(waMessage)}" target="_blank" rel="noopener">${directLabel}</a>
       </div>
     </article>
   `;
@@ -125,9 +130,7 @@ function renderGrid(gridSelector, items) {
 /* Vuelve a dibujar la grilla activa cuando cambia el idioma,
    para que los textos de los botones también se traduzcan. */
 function reRenderOnLangChange(gridSelector, getItems) {
-  const btn = document.querySelector(".lang-toggle");
-  if (!btn) return;
-  btn.addEventListener("click", () => renderGrid(gridSelector, getItems()));
+  document.addEventListener("bluemoon:langchange", () => renderGrid(gridSelector, getItems()));
 }
 
 /* ---------- Filtro por categoría (joyas / perfumes) ---------- */

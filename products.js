@@ -238,7 +238,8 @@ const perfumeProducts = [
    Ejemplo Colombia: 57 3001234567  ->  "573001234567"
    ============================================================ */
 const CONTACT = {
-  whatsappNumber: "573000000000", // <-- REEMPLAZA por tu número real
-  email: "contacto@bluemoon.com", // <-- REEMPLAZA por tu correo real
-  city: "Medellín, Colombia"
+  whatsappNumber: "573105086397",
+  email: "contacto@bluemoon.com", // <-- REEMPLAZA por tu correo real si es otro
+  city: "Medellín, Colombia",
+  tiktok: "https://www.tiktok.com/@bluemoon0016"
 };

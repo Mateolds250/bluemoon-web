@@ -10,7 +10,7 @@ const FOOTER_HTML = `
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="images/logo-bluemoon.svg" alt="BlueMoon" style="height:30px;margin-bottom:16px;">
+        <img src="images/logo-bluemoon.png" alt="BlueMoon" style="height:52px;margin-bottom:16px;">
         <p>
           <span class="lang-es">Joyas en oro, bisutería fina y perfumes originales de las casas más exclusivas del mundo.</span>
           <span class="lang-en">Gold jewelry, fine costume pieces and original perfumes from the world's most exclusive houses.</span>
@@ -22,7 +22,7 @@ const FOOTER_HTML = `
           <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V9a1 1 0 0 1 1-1z"/></svg>
           </a>
-          <a href="#" aria-label="TikTok" target="_blank" rel="noopener">
+          <a href="https://www.tiktok.com/@bluemoon0016" aria-label="TikTok" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M15 3c0 2.2 1.8 4 4 4"/></svg>
           </a>
         </div>
@@ -43,6 +43,7 @@ const FOOTER_HTML = `
           <li>Medellín, Colombia</li>
           <li id="footer-email">contacto@bluemoon.com</li>
           <li id="footer-whatsapp-text"><span class="lang-es">Pedidos por WhatsApp</span><span class="lang-en">Orders via WhatsApp</span></li>
+          <li><a href="https://www.tiktok.com/@bluemoon0016" target="_blank" rel="noopener"><span class="lang-es">Síguenos en TikTok</span><span class="lang-en">Follow us on TikTok</span></a></li>
         </ul>
       </div>
     </div>

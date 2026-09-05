@@ -148,3 +148,55 @@ function initFilters(getItems, gridSelector) {
     });
   });
 }
+
+/* ============================================================
+   Datos estructurados (SEO) — le dicen a Google qué es cada
+   producto (nombre, foto, marca, precio si es fijo) para que
+   pueda mostrarlo mejor en los resultados de búsqueda.
+   ============================================================ */
+function parsePriceCOP(priceStr) {
+  if (!priceStr) return null;
+  const match = priceStr.match(/\$([\d.]+)/);
+  if (!match) return null;
+  const digits = match[1].replace(/\./g, "");
+  const num = parseInt(digits, 10);
+  return isNaN(num) || num <= 0 ? null : num;
+}
+
+function injectProductStructuredData(items, pageUrl) {
+  try {
+    const products = items.map(item => {
+      const obj = {
+        "@type": "Product",
+        "name": item.nameEs,
+        "description": item.descEs,
+        "image": "https://bluemoonjoyas.com/" + item.image,
+        "sku": item.id,
+        "url": pageUrl
+      };
+      if (item.brand) obj.brand = { "@type": "Brand", "name": item.brand };
+      const priceNum = parsePriceCOP(item.price);
+      if (priceNum) {
+        obj.offers = {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": priceNum,
+          "availability": "https://schema.org/InStock",
+          "url": pageUrl
+        };
+      }
+      return obj;
+    });
+    const data = { "@context": "https://schema.org", "@graph": products };
+    let tag = document.getElementById("product-jsonld");
+    if (!tag) {
+      tag = document.createElement("script");
+      tag.type = "application/ld+json";
+      tag.id = "product-jsonld";
+      document.head.appendChild(tag);
+    }
+    tag.textContent = JSON.stringify(data);
+  } catch (e) {
+    console.error("No se pudo generar el JSON-LD de productos:", e);
+  }
+}

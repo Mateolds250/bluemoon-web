@@ -6,11 +6,17 @@ Es un sitio estático (HTML/CSS/JS puro, sin backend ni base de datos), bilingü
 
 ## Novedades de esta versión
 
+- **SEO**: metaetiquetas Open Graph/Twitter en las 5 páginas (para que se vean bien al compartir en WhatsApp/redes), `sitemap.xml` y `robots.txt`, y datos estructurados (JSON-LD) de Organización y de cada Producto para Google.
+- **Preguntas frecuentes** y **sección de Testimonios** (lista para llenar) en `contacto.html`.
+- **Política de precios**: joyas de oro (categoría "oro") ahora muestran "Cotizar (según precio del oro del día)" en vez de un precio fijo, ya que el precio del oro varía. Bisutería y perfumes conservan precio fijo cuando está definido.
+- **Instagram real conectado**: `instagram.com/bluemoon_oficial1`, tanto en el footer como en los datos estructurados.
 - **Panel de administración (`admin.html`)**: ahora puedes agregar, editar o eliminar productos —con foto incluida— desde un formulario, sin tocar código ni subir archivos a mano. Ver la sección **"0. Panel de administración"** más abajo.
 - **Catálogo en `data/products.json`**: los productos ya no viven escritos dentro de `js/products.js`; ahora viven en un archivo de datos (`data/products.json`) que tanto tú (a mano) como el panel de administración pueden editar.
 - **Carrito de compras**: cada producto tiene un botón "Agregar al carrito". El ícono de carrito en el menú muestra cuántos artículos hay. Al finalizar, arma un solo mensaje de WhatsApp con todos los productos, cantidades y precios.
 - **WhatsApp real conectado**: los pedidos (carrito y botones directos) ya usan el número +57 310 508 6397.
 - **TikTok enlazado**: el ícono de TikTok del pie de página y el enlace "Síguenos en TikTok" ya apuntan a `tiktok.com/@bluemoon0016`.
+
+**Pendiente de tu parte:** los precios de los perfumes (salvo 212 Men NYC) todavía dicen "Consultar disponibilidad" — no invento precios que no me has dado. Apenas tengas la lista de precios reales, cárgalos por `admin.html` (Editar cada perfume) o dímelos y los cargo yo.
 
 Si ya tenías el sitio subido a GitHub, en la sección **"Cómo actualizar el sitio en GitHub"** (más abajo) te digo exactamente qué archivos reemplazar.
 
@@ -130,13 +136,12 @@ Si en el futuro quieres cobrar con tarjeta directamente en la página, se puede 
 
 ## 6. Cómo actualizar el sitio en GitHub (si ya lo tenías publicado)
 
-Esta versión agrega el panel de administración y mueve el catálogo a un archivo de datos nuevo. Sube estos archivos a tu repositorio (los nombres repetidos se sobrescriben solos):
+Esta versión agrega SEO (metaetiquetas, sitemap, datos estructurados), preguntas frecuentes, testimonios, la nueva política de precios y el Instagram conectado. Sube estos archivos a tu repositorio (los nombres repetidos se sobrescriben solos):
 
-1. **En la raíz del repositorio** (donde están tus `.html`): entra a `<> Code`, dale **Add file → Upload files** y arrastra `admin.html` (nuevo). Confirma con **Commit changes**.
-2. **Crea la carpeta `data`**: en "Add file → Upload files", arrastra el archivo `products.json` que está dentro de la carpeta `data` de este zip — al arrastrarlo con su ruta completa (`data/products.json`) GitHub crea la carpeta sola; si tu navegador no conserva la ruta, sube `products.json` a la raíz y luego edítalo (ícono de lápiz) cambiando el nombre a `data/products.json` para moverlo a su carpeta. Commit.
-3. **Dentro de la carpeta `js`**: haz clic en la carpeta `js` para entrar en ella, luego **Add file → Upload files** y arrastra `products.js` (sobrescribe el anterior). Commit.
-
-**Importante:** con esta actualización, el catálogo ya NO se edita en `js/products.js` sino en `data/products.json` (o, más fácil, desde `admin.html`). Los demás archivos (`index.html`, `joyas.html`, `perfumes.html`, `nosotros.html`, `contacto.html`, `css/styles.css`, `js/main.js`, `js/cart.js`, `js/footer.js`) no cambiaron en esta versión, así que no es necesario volver a subirlos.
+1. **En la raíz del repositorio**: **Add file → Upload files** y arrastra `sitemap.xml` y `robots.txt` (nuevos), y `data/products.json` (si tu navegador conserva la ruta al arrastrar la carpeta `data` completa, se sobrescribe solo; si no, súbelo suelto y luego edítalo cambiando el nombre a `data/products.json` como se explicó antes). Confirma con **Commit changes**.
+2. **En la raíz también**: sube los 5 archivos `.html` (`index.html`, `joyas.html`, `perfumes.html`, `nosotros.html`, `contacto.html`) — todos cambiaron (llevan las metaetiquetas y datos estructurados nuevos). Commit.
+3. **Dentro de la carpeta `css`**: entra, **Add file → Upload files**, arrastra `styles.css` (sobrescribe). Commit.
+4. **Dentro de la carpeta `js`**: entra, **Add file → Upload files**, arrastra `main.js` y `footer.js` (sobrescriben). Commit.
 
 Entrar primero a la carpeta y subir desde ahí evita el problema de que los archivos queden sueltos en la raíz.
 

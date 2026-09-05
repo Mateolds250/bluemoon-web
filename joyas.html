@@ -5,8 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joyas en Oro, Bisutería y Sobre Pedido — BlueMoon</title>
 <meta name="description" content="Joyas en oro 10k, 14k y 18k, bisutería fina bañada en oro y diseños de joyería sobre pedido, hechos a tu medida en BlueMoon.">
+<link rel="canonical" href="https://bluemoonjoyas.com/joyas.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BlueMoon">
+<meta property="og:title" content="Joyas en Oro, Bisutería y Sobre Pedido — BlueMoon">
+<meta property="og:description" content="Joyas en oro 10k, 14k y 18k, bisutería fina bañada en oro y diseños de joyería sobre pedido, hechos a tu medida en BlueMoon.">
+<meta property="og:image" content="https://bluemoonjoyas.com/images/logo-bluemoon.png">
+<meta property="og:url" content="https://bluemoonjoyas.com/joyas.html">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joyas en Oro, Bisutería y Sobre Pedido — BlueMoon">
+<meta name="twitter:description" content="Joyas en oro 10k, 14k y 18k, bisutería fina bañada en oro y diseños de joyería sobre pedido, hechos a tu medida en BlueMoon.">
+<meta name="twitter:image" content="https://bluemoonjoyas.com/images/logo-bluemoon.png">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BlueMoon",
+  "url": "https://bluemoonjoyas.com/",
+  "logo": "https://bluemoonjoyas.com/images/logo-bluemoon.png",
+  "sameAs": ["https://www.instagram.com/bluemoon_oficial1/", "https://www.tiktok.com/@bluemoon0016"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+57-310-508-6397",
+    "contactType": "sales",
+    "areaServed": "CO"
+  }
+}
+</script>
 </head>
 <body class="lang-es">
 
@@ -93,6 +121,7 @@
   injectFooter();
   injectCartDrawer();
   renderGrid("#jewelry-grid", jewelryProducts);
+  injectProductStructuredData(jewelryProducts, "https://bluemoonjoyas.com/joyas.html");
   reRenderOnLangChange("#jewelry-grid", () => {
     const activeBtn = document.querySelector(".filter-btn.active");
     const cat = activeBtn ? activeBtn.dataset.filter : "all";

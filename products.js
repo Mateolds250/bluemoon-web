@@ -239,7 +239,7 @@ const perfumeProducts = [
     descEs: "Intensa, ahumada y especiada. Una de las fragancias de lujo más aclamadas por conocedores.",
     descEn: "Intense, smoky and spiced. One of the most acclaimed luxury fragrances among connoisseurs.",
     price: "Consultar disponibilidad",
-    image: "images/placeholder-perfume.svg",
+    image: "images/Carolina Herrera 212-Photoroom.png",
     badge: "Exclusivo · Nicho"
   }
 ];
@@ -254,4 +254,5 @@ const CONTACT = {
   email: "contacto@bluemoon.com", // <-- REEMPLAZA por tu correo real si es otro
   city: "Medellín, Colombia",
   tiktok: "https://www.tiktok.com/@bluemoon0016"
+  Instagram:https:"//www.instagram.com/bluemoon_oficial1/"
 };

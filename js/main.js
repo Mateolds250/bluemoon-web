@@ -9,7 +9,62 @@ document.addEventListener("DOMContentLoaded", () => {
   initLanguage();
   initWhatsappFloat();
   markActiveNavLink();
+  injectHeroSparkles();
+  initScrollReveal(".section-head, .category-card, .about-grid > div, .faq-item, .testimonial-card, .stat, .contact-card, .contact-info-item");
 });
+
+/* ============================================================
+   Imágenes con movimiento: chispas doradas en el hero y
+   aparición suave de secciones al hacer scroll.
+   ============================================================ */
+
+/* Agrega puntos de "chispa" dorada dentro de cada .hero, que suben
+   flotando gracias a la animación CSS .hero-sparkle (styles.css). */
+function injectHeroSparkles() {
+  document.querySelectorAll(".hero").forEach(hero => {
+    if (hero.querySelector(".hero-sparkle")) return;
+    const count = window.innerWidth < 760 ? 6 : 14;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement("span");
+      s.className = "hero-sparkle";
+      const size = 3 + Math.random() * 5;
+      s.style.width = size + "px";
+      s.style.height = size + "px";
+      s.style.left = Math.random() * 100 + "%";
+      s.style.bottom = (Math.random() * 30 - 10) + "px";
+      s.style.animationDuration = (7 + Math.random() * 6) + "s";
+      s.style.animationDelay = (Math.random() * 6) + "s";
+      hero.appendChild(s);
+    }
+  });
+}
+
+/* Observa elementos y les agrega "is-visible" cuando entran en
+   pantalla, para el efecto de aparición suave (.reveal-on-scroll). */
+let _revealObserver = null;
+function getRevealObserver() {
+  if (_revealObserver) return _revealObserver;
+  if (!("IntersectionObserver" in window)) return null;
+  _revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        _revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  return _revealObserver;
+}
+
+function initScrollReveal(selector) {
+  const observer = getRevealObserver();
+  document.querySelectorAll(selector).forEach(el => {
+    if (el.classList.contains("reveal-on-scroll")) return;
+    el.classList.add("reveal-on-scroll");
+    if (observer) observer.observe(el);
+    else el.classList.add("is-visible");
+  });
+}
 
 /* ---------- Menú móvil ---------- */
 function initMobileNav() {
@@ -125,6 +180,7 @@ function renderGrid(gridSelector, items) {
   if (!grid) return;
   const lang = document.body.classList.contains("lang-en") ? "en" : "es";
   grid.innerHTML = items.map(item => renderProductCard(item, lang)).join("");
+  initScrollReveal(gridSelector + " .product-card");
 }
 
 /* Vuelve a dibujar la grilla activa cuando cambia el idioma,
@@ -147,4 +203,56 @@ function initFilters(getItems, gridSelector) {
       renderGrid(gridSelector, filtered);
     });
   });
+}
+
+/* ============================================================
+   Datos estructurados (SEO) — le dicen a Google qué es cada
+   producto (nombre, foto, marca, precio si es fijo) para que
+   pueda mostrarlo mejor en los resultados de búsqueda.
+   ============================================================ */
+function parsePriceCOP(priceStr) {
+  if (!priceStr) return null;
+  const match = priceStr.match(/\$([\d.]+)/);
+  if (!match) return null;
+  const digits = match[1].replace(/\./g, "");
+  const num = parseInt(digits, 10);
+  return isNaN(num) || num <= 0 ? null : num;
+}
+
+function injectProductStructuredData(items, pageUrl) {
+  try {
+    const products = items.map(item => {
+      const obj = {
+        "@type": "Product",
+        "name": item.nameEs,
+        "description": item.descEs,
+        "image": "https://bluemoonjoyas.com/" + item.image,
+        "sku": item.id,
+        "url": pageUrl
+      };
+      if (item.brand) obj.brand = { "@type": "Brand", "name": item.brand };
+      const priceNum = parsePriceCOP(item.price);
+      if (priceNum) {
+        obj.offers = {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": priceNum,
+          "availability": "https://schema.org/InStock",
+          "url": pageUrl
+        };
+      }
+      return obj;
+    });
+    const data = { "@context": "https://schema.org", "@graph": products };
+    let tag = document.getElementById("product-jsonld");
+    if (!tag) {
+      tag = document.createElement("script");
+      tag.type = "application/ld+json";
+      tag.id = "product-jsonld";
+      document.head.appendChild(tag);
+    }
+    tag.textContent = JSON.stringify(data);
+  } catch (e) {
+    console.error("No se pudo generar el JSON-LD de productos:", e);
+  }
 }

@@ -7,7 +7,7 @@
       "nameEn": "18k Gold Solitaire Ring",
       "descEs": "Anillo clásico en oro de 18 quilates, acabado pulido espejo. Disponible en varias tallas.",
       "descEn": "Classic 18k gold ring with a mirror-polished finish. Available in multiple sizes.",
-      "price": "$980.000 COP",
+      "price": "Cotizar (según precio del oro del día)",
       "image": "images/placeholder-ring.svg",
       "badge": "Oro 18k"
     },
@@ -18,7 +18,7 @@
       "nameEn": "10k Gold Cuban Link Chain",
       "descEs": "Cadena tipo cubana maciza, oro de 10 quilates. Un clásico que nunca pasa de moda.",
       "descEn": "Solid Cuban link chain in 10k gold. A timeless classic.",
-      "price": "$1.450.000 COP",
+      "price": "Cotizar (según precio del oro del día)",
       "image": "images/placeholder-necklace.svg",
       "badge": "Oro 10k"
     },
@@ -29,7 +29,7 @@
       "nameEn": "14k Gold & Pearl Earrings",
       "descEs": "Aretes delicados con perla cultivada engastada en oro de 14 quilates.",
       "descEn": "Delicate cultured pearl earrings set in 14k gold.",
-      "price": "$620.000 COP",
+      "price": "Cotizar (según precio del oro del día)",
       "image": "images/placeholder-earrings.svg",
       "badge": "Oro 14k"
     },
@@ -52,8 +52,184 @@
       "descEs": "Set de collares en capas, bañados en oro 24k, ideales para el día a día.",
       "descEn": "Layered necklace set, 24k gold-plated, perfect for everyday wear.",
       "price": "$110.000 COP",
-      "image": "images/collar-bisuteria-capas.jpg",
+      "image": "images/placeholder-necklace.svg",
       "badge": "Bisutería"
+    },
+    {
+      "id": "oro-cadena-grumete-50cm",
+      "category": "oro",
+      "nameEs": "Cadena Grumete 50cm",
+      "nameEn": "Mariner Link Chain 50cm",
+      "descEs": "Cadena en oro con eslabón grumete (tipo mariner), 50cm de largo. Disponible en varios pesos: 6.23g, 6.31g y 7.91g (peso sin broche).",
+      "descEn": "Gold mariner-link chain, 50cm long. Available in several weights: 6.23g, 6.31g and 7.91g (weight without clasp).",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadena-grumete-50cm.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-pulsera-figaro-20cm",
+      "category": "oro",
+      "nameEs": "Pulsera Figaro Italiana 20cm",
+      "nameEn": "Italian Figaro Bracelet 20cm",
+      "descEs": "Pulsera en oro estilo Figaro, fabricación italiana, 20cm de largo. Pesos disponibles: 2.7g, 4.48g, 4.52g y 4.6g.",
+      "descEn": "Italian-made gold Figaro-style bracelet, 20cm long. Available weights: 2.7g, 4.48g, 4.52g and 4.6g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-pulsera-figaro-20cm.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-60cm-cordon-cubana",
+      "category": "oro",
+      "nameEs": "Cadenas Italianas 60cm (Cordón y Cubana)",
+      "nameEn": "Italian Chains 60cm (Rope & Curb)",
+      "descEs": "Dos estilos italianos de 60cm: cadena de cordón (22.43g) y cadena cubana fina (10.2g).",
+      "descEn": "Two Italian 60cm styles: rope chain (22.43g) and fine curb chain (10.2g).",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-60cm-cordon-cubana.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadena-cubana-60cm",
+      "category": "oro",
+      "nameEs": "Cadena Cubana 60cm",
+      "nameEn": "Cuban Link Chain 60cm",
+      "descEs": "Cadena cubana en oro, 60cm, eslabón grueso. Disponible en 29.17g (con broche decorado) y 29.86g.",
+      "descEn": "Gold Cuban link chain, 60cm, thick link. Available in 29.17g (with decorated clasp) and 29.86g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadena-cubana-60cm.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-anillos-caballero-herradura",
+      "category": "oro",
+      "nameEs": "Anillos de Caballero — Herradura y Caballo",
+      "nameEn": "Men's Rings — Horseshoe & Horse",
+      "descEs": "Colección de anillos de caballero en oro con diseños de caballo, herradura y león. Tallas 10 a 11, pesos entre 3g y 9.77g.",
+      "descEn": "Collection of men's gold rings with horse, horseshoe and lion designs. Sizes 10 to 11, weights between 3g and 9.77g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-anillos-caballero-herradura.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-topos",
+      "category": "oro",
+      "nameEs": "Topos (Aretes) en Oro",
+      "nameEn": "Gold Stud Earrings",
+      "descEs": "Topos en oro: diseño moneda (0.7g a 0.74g) y diseño hoja/concha (0.47g y 0.57g).",
+      "descEn": "Gold stud earrings: coin design (0.7g to 0.74g) and leaf/shell design (0.47g and 0.57g).",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-topos.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-anillos-caballero-leon-aguila",
+      "category": "oro",
+      "nameEs": "Anillos de Caballero — León y Águila con Piedras",
+      "nameEn": "Men's Rings — Lion & Eagle with Stones",
+      "descEs": "Anillos de caballero rectangulares con relieve de león o águila y piedras (circonias blancas o esmeraldas). Tallas 9.5 a 11, pesos de 7.65g a 10.08g.",
+      "descEn": "Rectangular men's rings with lion or eagle relief and stones (white cubic zirconia or emerald). Sizes 9.5 to 11, weights 7.65g to 10.08g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-anillos-caballero-leon-aguila.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-anillos-dama-corazon",
+      "category": "oro",
+      "nameEs": "Anillos de Dama — Corazón y Ondas",
+      "nameEn": "Women's Rings — Heart & Wave",
+      "descEs": "Anillos de dama en oro con diseño de corazón bicolor y ondas. Tallas 7 a 9.2, pesos entre 1.67g y 1.9g.",
+      "descEn": "Women's gold rings with two-tone heart and wave designs. Sizes 7 to 9.2, weights between 1.67g and 1.9g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-anillos-dama-corazon.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-anillos-dama-piedras-t7",
+      "category": "oro",
+      "nameEs": "Anillos de Dama con Piedras — Talla 7",
+      "nameEn": "Women's Gemstone Rings — Size 7",
+      "descEs": "Anillos de dama en oro con circonias y piedras de colores, talla 7 (algunos 7.5). Pesos desde 0.74g hasta 3.88g.",
+      "descEn": "Women's gold rings with cubic zirconia and colored stones, size 7 (some 7.5). Weights from 0.74g to 3.88g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-anillos-dama-piedras-t7.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-pulsera-tennis",
+      "category": "oro",
+      "nameEs": "Pulsera Tennis con Piedras",
+      "nameEn": "Tennis Bracelet with Stones",
+      "descEs": "Pulsera tipo tennis en oro con circonias verdes o multicolor. Largos de 18cm (9.23g), 19cm (10.59g, multicolor) y 20cm (10.07g).",
+      "descEn": "Gold tennis-style bracelet with green or multicolor cubic zirconia. Lengths 18cm (9.23g), 19cm (10.59g, multicolor) and 20cm (10.07g).",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-pulsera-tennis.jpg",
+      "badge": "Oro"
+    },
+    {
+      "id": "oro-pulseras-cubanas-italianas",
+      "category": "oro",
+      "nameEs": "Pulseras Cubanas Italianas",
+      "nameEn": "Italian Cuban Link Bracelets",
+      "descEs": "Pulseras cubanas de fabricación italiana en varios largos (18.5cm a 29cm) y pesos (1.61g a 5.36g).",
+      "descEn": "Italian-made Cuban link bracelets in various lengths (18.5cm to 29cm) and weights (1.61g to 5.36g).",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-pulseras-cubanas-italianas.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-50cm-dije",
+      "category": "oro",
+      "nameEs": "Cadenas Finas 50cm con Dije (Italia)",
+      "nameEn": "Fine 50cm Chains with Pendant (Italy)",
+      "descEs": "Cadenas finas italianas de 50cm, algunas con dije de corazón o caballo. Pesos entre 0.8g y 3.4g.",
+      "descEn": "Fine Italian 50cm chains, some with a heart or horse pendant. Weights between 0.8g and 3.4g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-50cm-dije.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-40cm-dijes",
+      "category": "oro",
+      "nameEs": "Cadenas 40cm con Dijes (Italia)",
+      "nameEn": "40cm Chains with Charms (Italy)",
+      "descEs": "Cadenas italianas de 40cm con dijes: cruz, flor, iniciales y más. Pesos entre 0.8g y 5g.",
+      "descEn": "Italian 40cm chains with charms: cross, flower, initials and more. Weights between 0.8g and 5g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-40cm-dijes.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-45cm",
+      "category": "oro",
+      "nameEs": "Cadenas 45cm (Italia)",
+      "nameEn": "45cm Chains (Italy)",
+      "descEs": "Cadenas italianas de 45cm en varios estilos (cordón, trigo, caja), algunas con dije de corazón, mano o mariposa. Pesos entre 0.33g y 14.1g.",
+      "descEn": "Italian 45cm chains in various styles (rope, wheat, box), some with a heart, fist or butterfly pendant. Weights between 0.33g and 14.1g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-45cm.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-40cm-variadas",
+      "category": "oro",
+      "nameEs": "Cadenas 40cm Variadas (Italia)",
+      "nameEn": "Assorted 40cm Chains (Italy)",
+      "descEs": "Variedad de cadenas italianas de 40cm: trenzada, estrella, cable, grumete y más. Pesos entre 0.46g y 8.12g.",
+      "descEn": "Variety of Italian 40cm chains: twisted, star, cable, mariner and more. Weights between 0.46g and 8.12g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-40cm-variadas.jpg",
+      "badge": "Italia"
+    },
+    {
+      "id": "oro-cadenas-40cm-finas",
+      "category": "oro",
+      "nameEs": "Cadenas 40cm Finas (Italia)",
+      "nameEn": "Fine 40cm Chains (Italy)",
+      "descEs": "Cadenas finas italianas de 40cm: serpiente, guaya y más. Pesos entre 0.77g y 3.44g.",
+      "descEn": "Fine Italian 40cm chains: snake, wire (\"guaya\") and more. Weights between 0.77g and 3.44g.",
+      "price": "Cotizar (según precio del oro del día)",
+      "image": "images/oro-cadenas-40cm-finas.jpg",
+      "badge": "Italia"
     },
     {
       "id": "joya-sobre-pedido",
@@ -211,17 +387,6 @@
       "price": "Consultar disponibilidad",
       "image": "images/placeholder-perfume.svg",
       "badge": "Exclusivo · Nicho"
-    },
-    {
-      "id": "giorgio-armani-acqua-di-gio",
-      "category": "el",
-      "nameEs": "Giorgio Armani Acqua Di Gio",
-      "nameEn": "Giorgio Armani Acqua Di Gio",
-      "descEs": "",
-      "descEn": "",
-      "price": "$300.000 COP",
-      "image": "images/giorgio-armani-acqua-di-gio.jpg",
-      "brand": "carolina herrera"
     }
   ],
   "contact": {

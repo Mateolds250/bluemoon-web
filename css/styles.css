@@ -100,7 +100,7 @@ body.lang-en .lang-es { display: none; }
   justify-content: space-between;
   padding: 14px 0;
 }
-.logo img { height: 34px; width: auto; }
+.logo img { height: 58px; width: auto; display: block; }
 .main-nav {
   display: flex;
   align-items: center;
@@ -200,6 +200,70 @@ body.lang-en .lang-es { display: none; }
   width: 380px; height: 380px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+  animation: hero-glow-move 14s ease-in-out infinite alternate;
+}
+@keyframes hero-glow-move {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  100% { transform: translate(-50px, 40px) scale(1.2); opacity: 0.55; }
+}
+
+/* Chispas doradas flotantes en el hero (se agregan por JS, ver injectHeroSparkles en main.js) */
+.hero-sparkle {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-light), var(--gold) 55%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  animation-name: sparkle-float;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+@keyframes sparkle-float {
+  0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+  15%  { opacity: 0.85; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-180px) scale(1); opacity: 0; }
+}
+
+/* Aparición suave de secciones y tarjetas al hacer scroll (ver initScrollReveal en main.js) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Video de fondo en el hero (por ahora solo en Inicio) */
+.hero-has-video::before { z-index: 1; }
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(212,175,55,0.18), transparent 60%),
+    linear-gradient(180deg, rgba(10,15,36,0.55) 0%, rgba(10,15,36,0.8) 55%, var(--navy-deep) 100%);
+}
+.hero-has-video .hero-sparkle { z-index: 1; }
+.hero-has-video .container { position: relative; z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sparkle { display: none; }
+  .hero::before { animation: none; }
+  .reveal-on-scroll { transition: none; opacity: 1; transform: none; }
+  .hero-video-bg { display: none; }
 }
 .hero-eyebrow {
   display: inline-block;
@@ -314,7 +378,8 @@ body.lang-en .lang-es { display: none; }
   position: relative;
   background: var(--navy-light);
 }
-.product-media img { width: 100%; height: 100%; object-fit: cover; }
+.product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.product-card:hover .product-media img { transform: scale(1.08); }
 .product-badge {
   position: absolute;
   top: 14px; left: 14px;
@@ -361,6 +426,59 @@ body.lang-en .lang-es { display: none; }
   border: 1px solid rgba(212,175,55,0.18);
   padding: 40px;
   text-align: center;
+}
+
+/* ---------- Preguntas frecuentes ---------- */
+.faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 14px; }
+.faq-item {
+  background: var(--navy-light);
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: var(--radius);
+  padding: 4px 22px;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 30px 18px 0;
+  font-weight: 600;
+  color: var(--cream);
+  position: relative;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 16px;
+  color: var(--gold);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item p { color: var(--text-muted); margin: 0 0 18px; line-height: 1.6; }
+
+/* ---------- Testimonios ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+.testimonial-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.testimonial-card .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 12px; }
+.testimonial-card p.quote { color: var(--cream); font-style: italic; line-height: 1.6; margin: 0 0 16px; }
+.testimonial-card .author { color: var(--text-muted); font-size: 0.9rem; }
+.testimonial-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  border: 1px dashed rgba(212,175,55,0.3);
+  border-radius: var(--radius);
 }
 
 /* ---------- Stats ---------- */
@@ -482,11 +600,11 @@ body.lang-en .lang-es { display: none; }
 
 .cart-drawer {
   position: fixed;
-  top: 76px;
+  top: 94px;
   right: -400px;
   width: 380px;
   max-width: 90vw;
-  height: calc(100% - 76px);
+  height: calc(100% - 94px);
   background: var(--navy);
   z-index: 301;
   transition: right 0.35s ease;

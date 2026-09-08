@@ -259,14 +259,14 @@
     {
       "id": "ysl-black-opium",
       "category": "ella",
-      "brand": "Yves Saint Laurent",
       "nameEs": "Black Opium",
       "nameEn": "Black Opium",
       "descEs": "Café, vainilla y flor blanca en una fragancia adictiva y moderna.",
       "descEn": "Coffee, vanilla and white flowers in an addictive, modern fragrance.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Best seller"
+      "image": "images/ysl-black-opium.jpg",
+      "badge": "Best seller",
+      "brand": "Yves Saint Laurent"
     },
     {
       "id": "carolina-herrera-good-girl",

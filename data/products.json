@@ -307,14 +307,14 @@
     {
       "id": "dior-sauvage",
       "category": "el",
-      "brand": "Dior",
       "nameEs": "Sauvage",
       "nameEn": "Sauvage",
       "descEs": "El rey de las fragancias masculinas modernas. Bergamota de Calabria y pimienta.",
       "descEn": "The king of modern masculine fragrances. Calabrian bergamot and pepper.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Best seller"
+      "image": "images/dior-sauvage.jpg",
+      "badge": "Best seller",
+      "brand": "Dior"
     },
     {
       "id": "chanel-bleu",

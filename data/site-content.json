@@ -1,0 +1,48 @@
+{
+  "home": {
+    "heroEyebrow": "Exclusividad bajo la luna",
+    "heroLead": "En BlueMoon creamos joyas en oro, bisutería fina y piezas sobre pedido, y seleccionamos los perfumes más exclusivos y famosos del mundo para ti.",
+    "categoryJoyasImage": "images/placeholder-ring.svg",
+    "categoryJoyasText": "Oro 10k, 14k y 18k, bisutería fina bañada en oro, y diseños sobre pedido hechos a tu medida.",
+    "categoryPerfumesImage": "images/placeholder-perfume.svg",
+    "categoryPerfumesText": "Una selección curada de los perfumes originales más famosos y exclusivos, de diseñador y de nicho de lujo.",
+    "stat1Number": "100%",
+    "stat1Label": "Perfumes originales garantizados",
+    "stat2Number": "18k",
+    "stat2Label": "Oro de la más alta calidad",
+    "stat3Number": "1:1",
+    "stat3Label": "Diseños personalizados sobre pedido"
+  },
+  "nosotros": {
+    "heroEyebrow": "Nuestra historia",
+    "aboutEyebrow": "Quiénes somos",
+    "aboutHeading": "Nacimos para reunir dos pasiones: la joyería y la perfumería fina",
+    "aboutText": "BlueMoon es una marca dedicada a la venta de joyas en oro y perfumes originales de las casas más exclusivas del mundo. Trabajamos con oro de alta calidad, ofrecemos bisutería fina bañada en oro y diseñamos piezas sobre pedido para quienes buscan algo verdaderamente único.",
+    "aboutImage": "images/logo-bluemoon.png",
+    "aboutLocation": "Medellín, Colombia",
+    "value1Title": "Autenticidad",
+    "value1Text": "Perfumes 100% originales y oro con su respectivo respaldo de calidad.",
+    "value2Title": "Exclusividad",
+    "value2Text": "Seleccionamos cuidadosamente cada pieza y cada fragancia de nuestro catálogo.",
+    "value3Title": "Atención personalizada",
+    "value3Text": "Te acompañamos desde la idea hasta la entrega, incluso en diseños sobre pedido.",
+    "commitmentEyebrow": "Nuestro compromiso",
+    "commitmentHeading": "Contigo, en cada detalle",
+    "commitmentText": "Ya sea una joya que se convierta en herencia familiar o el perfume que se vuelva tu firma personal, en BlueMoon cuidamos cada detalle para que sea perfecto."
+  },
+  "contacto": {
+    "heroEyebrow": "Hablemos",
+    "heroTitle": "Cuéntanos qué estás buscando",
+    "heroLead": "Ya sea una joya sobre pedido o el perfume perfecto, respondemos rápido por WhatsApp.",
+    "faq1Q": "¿Cómo hago un pedido?",
+    "faq1A": "Agrega los productos que quieras al carrito o escríbenos directo por WhatsApp desde cualquier página. Confirmamos disponibilidad, precio final y forma de pago contigo antes de cerrar el pedido.",
+    "faq2Q": "¿Qué métodos de pago aceptan?",
+    "faq2A": "Transferencia bancaria, Nequi, Daviplata y efectivo. Coordinamos el método exacto contigo por WhatsApp al confirmar tu pedido.",
+    "faq3Q": "¿Cuánto tardan las piezas sobre pedido?",
+    "faq3A": "Depende de la complejidad del diseño; te damos un tiempo estimado apenas conversemos sobre tu idea por WhatsApp.",
+    "faq4Q": "¿Los perfumes son 100% originales?",
+    "faq4A": "Sí. Todos nuestros perfumes se adquieren directamente de distribuidores autorizados — nunca vendemos imitaciones ni \"inspirados en\".",
+    "faq5Q": "¿Tienen garantía o política de cambios?",
+    "faq5A": "Sí, escríbenos por WhatsApp dentro de los primeros días después de recibir tu pedido si algo no está bien y lo resolvemos juntos."
+  }
+}

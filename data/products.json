@@ -343,14 +343,14 @@
     {
       "id": "creed-aventus",
       "category": "el",
-      "brand": "Creed",
       "nameEs": "Aventus",
       "nameEn": "Aventus",
       "descEs": "Piña, abedul ahumado y almizcle. La fragancia de nicho más deseada por caballeros.",
       "descEn": "Pineapple, smoky birch and musk. The most coveted niche fragrance for men.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Exclusivo · Nicho"
+      "image": "images/creed-aventus.jpg",
+      "badge": "Exclusivo · Nicho",
+      "brand": "Creed"
     },
     {
       "id": "tom-ford-black-orchid",

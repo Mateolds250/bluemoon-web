@@ -331,14 +331,14 @@
     {
       "id": "armani-acqua-di-gio",
       "category": "el",
-      "brand": "Giorgio Armani",
       "nameEs": "Acqua di Giò",
       "nameEn": "Acqua di Giò",
       "descEs": "Una obra maestra acuática con notas marinas y bergamota.",
       "descEn": "An aquatic masterpiece with sea notes and bergamot.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Clásico"
+      "image": "images/armani-acqua-di-gio.jpg",
+      "badge": "Clásico",
+      "brand": "Giorgio Armani"
     },
     {
       "id": "creed-aventus",

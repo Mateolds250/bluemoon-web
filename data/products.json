@@ -355,14 +355,14 @@
     {
       "id": "tom-ford-black-orchid",
       "category": "unisex",
-      "brand": "Tom Ford",
       "nameEs": "Black Orchid",
       "nameEn": "Black Orchid",
       "descEs": "Lujoso, oscuro y sensual: orquídea negra, trufa y especias.",
       "descEn": "Luxurious, dark and sensual: black orchid, truffle and spice.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Exclusivo · Nicho"
+      "image": "images/tom-ford-black-orchid.jpg",
+      "badge": "Exclusivo · Nicho",
+      "brand": "Tom Ford"
     },
     {
       "id": "byredo-gypsy-water",

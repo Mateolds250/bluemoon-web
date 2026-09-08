@@ -78,13 +78,13 @@
   </video>
   <div class="hero-video-overlay"></div>
   <div class="container">
-    <span class="hero-eyebrow"><span class="lang-es">Exclusividad bajo la luna</span><span class="lang-en">Exclusivity under the moon</span></span>
+    <span class="hero-eyebrow"><span class="lang-es" id="home-hero-eyebrow">Exclusividad bajo la luna</span><span class="lang-en">Exclusivity under the moon</span></span>
     <h1>
       <span class="lang-es">Joyas en <em>oro</em> y perfumes <em>originales</em> de otro nivel</span>
       <span class="lang-en">Fine <em>gold</em> jewelry and <em>original</em> luxury perfumes</span>
     </h1>
     <p class="lead">
-      <span class="lang-es">En BlueMoon creamos joyas en oro, bisutería fina y piezas sobre pedido, y seleccionamos los perfumes más exclusivos y famosos del mundo para ti.</span>
+      <span class="lang-es" id="home-hero-lead">En BlueMoon creamos joyas en oro, bisutería fina y piezas sobre pedido, y seleccionamos los perfumes más exclusivos y famosos del mundo para ti.</span>
       <span class="lang-en">At BlueMoon we craft gold jewelry, fine costume pieces and made-to-order designs, and curate the world's most exclusive, famous perfumes for you.</span>
     </p>
     <div class="hero-actions">
@@ -102,19 +102,19 @@
     </div>
     <div class="category-grid">
       <div class="category-card">
-        <img class="icon" src="images/placeholder-ring.svg" alt="Joyas" style="border-radius:10px;">
+        <img class="icon" id="home-cat-joyas-img" src="images/placeholder-ring.svg" alt="Joyas" style="border-radius:10px;">
         <h3><span class="lang-es">Joyas</span><span class="lang-en">Jewelry</span></h3>
         <p>
-          <span class="lang-es">Oro 10k, 14k y 18k, bisutería fina bañada en oro, y diseños sobre pedido hechos a tu medida.</span>
+          <span class="lang-es" id="home-cat-joyas-text">Oro 10k, 14k y 18k, bisutería fina bañada en oro, y diseños sobre pedido hechos a tu medida.</span>
           <span class="lang-en">10k, 14k and 18k gold, fine gold-plated pieces, and made-to-order designs crafted to your vision.</span>
         </p>
         <a href="joyas.html" class="btn btn-outline btn-small"><span class="lang-es">Explorar</span><span class="lang-en">Explore</span></a>
       </div>
       <div class="category-card">
-        <img class="icon" src="images/placeholder-perfume.svg" alt="Perfumes" style="border-radius:10px;">
+        <img class="icon" id="home-cat-perfumes-img" src="images/placeholder-perfume.svg" alt="Perfumes" style="border-radius:10px;">
         <h3><span class="lang-es">Perfumes</span><span class="lang-en">Perfumes</span></h3>
         <p>
-          <span class="lang-es">Una selección curada de los perfumes originales más famosos y exclusivos, de diseñador y de nicho de lujo.</span>
+          <span class="lang-es" id="home-cat-perfumes-text">Una selección curada de los perfumes originales más famosos y exclusivos, de diseñador y de nicho de lujo.</span>
           <span class="lang-en">A curated selection of the most famous and exclusive original perfumes, designer and luxury niche.</span>
         </p>
         <a href="perfumes.html" class="btn btn-outline btn-small"><span class="lang-es">Explorar</span><span class="lang-en">Explore</span></a>
@@ -142,16 +142,16 @@
     </div>
     <div class="stats-row">
       <div class="stat">
-        <h3>100%</h3>
-        <p><span class="lang-es">Perfumes originales garantizados</span><span class="lang-en">Guaranteed original perfumes</span></p>
+        <h3 id="home-stat1-number">100%</h3>
+        <p><span class="lang-es" id="home-stat1-label">Perfumes originales garantizados</span><span class="lang-en">Guaranteed original perfumes</span></p>
       </div>
       <div class="stat">
-        <h3>18k</h3>
-        <p><span class="lang-es">Oro de la más alta calidad</span><span class="lang-en">Highest quality gold</span></p>
+        <h3 id="home-stat2-number">18k</h3>
+        <p><span class="lang-es" id="home-stat2-label">Oro de la más alta calidad</span><span class="lang-en">Highest quality gold</span></p>
       </div>
       <div class="stat">
-        <h3>1:1</h3>
-        <p><span class="lang-es">Diseños personalizados sobre pedido</span><span class="lang-en">One-of-a-kind made-to-order designs</span></p>
+        <h3 id="home-stat3-number">1:1</h3>
+        <p><span class="lang-es" id="home-stat3-label">Diseños personalizados sobre pedido</span><span class="lang-en">One-of-a-kind made-to-order designs</span></p>
       </div>
     </div>
   </div>
@@ -172,6 +172,20 @@
 <script>
   injectFooter();
   injectCartDrawer();
+  applySiteContent("home", {
+    "home-hero-eyebrow": "heroEyebrow",
+    "home-hero-lead": "heroLead",
+    "home-cat-joyas-img": "categoryJoyasImage:img",
+    "home-cat-joyas-text": "categoryJoyasText",
+    "home-cat-perfumes-img": "categoryPerfumesImage:img",
+    "home-cat-perfumes-text": "categoryPerfumesText",
+    "home-stat1-number": "stat1Number",
+    "home-stat1-label": "stat1Label",
+    "home-stat2-number": "stat2Number",
+    "home-stat2-label": "stat2Label",
+    "home-stat3-number": "stat3Number",
+    "home-stat3-label": "stat3Label"
+  });
   const featured = [jewelryProducts[0], jewelryProducts[3], perfumeProducts[3], perfumeProducts[7]];
   renderGrid("#featured-grid", featured);
   reRenderOnLangChange("#featured-grid", () => featured);

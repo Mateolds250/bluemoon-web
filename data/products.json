@@ -283,14 +283,14 @@
     {
       "id": "mfk-baccarat-rouge",
       "category": "ella",
-      "brand": "Maison Francis Kurkdjian",
       "nameEs": "Baccarat Rouge 540",
       "nameEn": "Baccarat Rouge 540",
       "descEs": "La joya del nicho de lujo: azafrán y madera de ámbar en una fragancia inconfundible.",
       "descEn": "The jewel of luxury niche perfumery: saffron and amberwood in an unmistakable scent.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Exclusivo · Nicho"
+      "image": "images/mfk-baccarat-rouge.jpg",
+      "badge": "Exclusivo · Nicho",
+      "brand": "Maison Francis Kurkdjian"
     },
     {
       "id": "carolina-herrera-212-men",

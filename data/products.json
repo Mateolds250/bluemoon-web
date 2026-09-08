@@ -271,14 +271,14 @@
     {
       "id": "carolina-herrera-good-girl",
       "category": "ella",
-      "brand": "Carolina Herrera",
       "nameEs": "Good Girl",
       "nameEn": "Good Girl",
       "descEs": "Contraste de luz y sombra en su icónico frasco de tacón. Cacao, jazmín y almendra.",
       "descEn": "A contrast of light and shadow in its iconic stiletto bottle. Cacao, jasmine and almond.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Best seller"
+      "image": "images/carolina-herrera-good-girl.jpg",
+      "badge": "Best seller",
+      "brand": "Carolina Herrera"
     },
     {
       "id": "mfk-baccarat-rouge",

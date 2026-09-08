@@ -247,14 +247,14 @@
     {
       "id": "chanel-no5",
       "category": "ella",
-      "brand": "Chanel",
       "nameEs": "Chanel N.º 5",
       "nameEn": "Chanel No. 5",
       "descEs": "El perfume más icónico del mundo. Floral aldehídico, elegante y atemporal.",
       "descEn": "The world's most iconic perfume. Aldehydic floral, elegant and timeless.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Icónico"
+      "image": "images/chanel-no5.jpg",
+      "badge": "Icónico",
+      "brand": "Chanel"
     },
     {
       "id": "ysl-black-opium",

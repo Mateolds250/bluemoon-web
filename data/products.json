@@ -379,14 +379,14 @@
     {
       "id": "amouage-interlude-man",
       "category": "unisex",
-      "brand": "Amouage",
       "nameEs": "Interlude Man",
       "nameEn": "Interlude Man",
       "descEs": "Intensa, ahumada y especiada. Una de las fragancias de lujo más aclamadas por conocedores.",
       "descEn": "Intense, smoky and spiced. One of the most acclaimed luxury fragrances among connoisseurs.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Exclusivo · Nicho"
+      "image": "images/amouage-interlude-man.jpg",
+      "badge": "Exclusivo · Nicho",
+      "brand": "Amouage"
     }
   ],
   "contact": {

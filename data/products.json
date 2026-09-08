@@ -367,14 +367,14 @@
     {
       "id": "byredo-gypsy-water",
       "category": "unisex",
-      "brand": "Byredo",
       "nameEs": "Gypsy Water",
       "nameEn": "Gypsy Water",
       "descEs": "Bergamota, enebro y vainilla en una fragancia de nicho libre y bohemia.",
       "descEn": "Bergamot, juniper and vanilla in a free-spirited niche fragrance.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Nicho"
+      "image": "images/byredo-gypsy-water.jpg",
+      "badge": "Nicho",
+      "brand": "Byredo"
     },
     {
       "id": "amouage-interlude-man",

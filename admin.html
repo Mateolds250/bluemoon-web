@@ -124,6 +124,11 @@
     </details>
   </div>
 
+  <div class="tab-group" id="main-tabs" style="display:none;">
+    <button type="button" class="tab-btn main-tab-btn active" data-maintab="catalog">Catálogo (joyas y perfumes)</button>
+    <button type="button" class="tab-btn main-tab-btn" data-maintab="content">Contenido del sitio</button>
+  </div>
+
   <div class="card" id="form-card" style="display:none;">
     <h2 id="form-title">2. Agregar producto nuevo</h2>
     <div class="tab-group">
@@ -188,6 +193,22 @@
   <div class="card" id="list-card" style="display:none;">
     <h2>3. Catálogo actual</h2>
     <div id="product-list" class="product-list"></div>
+  </div>
+
+  <div id="panel-content" style="display:none;">
+    <div class="card">
+      <div class="tab-group">
+        <button type="button" class="tab-btn content-tab-btn active" data-ctab="home">Inicio</button>
+        <button type="button" class="tab-btn content-tab-btn" data-ctab="nosotros">Nosotros</button>
+        <button type="button" class="tab-btn content-tab-btn" data-ctab="contacto">Contacto</button>
+        <button type="button" class="tab-btn content-tab-btn" data-ctab="info">Datos de contacto</button>
+      </div>
+      <p class="help" style="margin-top:-4px;">Estos textos son solo en español — la versión en inglés del sitio no cambia por ahora.</p>
+      <div id="content-home"></div>
+      <div id="content-nosotros" style="display:none;"></div>
+      <div id="content-contacto" style="display:none;"></div>
+      <div id="content-info" style="display:none;"></div>
+    </div>
   </div>
 </div>
 
@@ -326,6 +347,108 @@ let catalogSha = null;
 let currentType = "jewelry";
 let editingId = null;
 
+/* ============================================================
+   CONTENIDO EDITABLE DE PÁGINAS (Inicio, Nosotros, Contacto)
+   Vive en data/site-content.json — mismo mecanismo que el catálogo.
+   ============================================================ */
+let siteContent = { home: {}, nosotros: {}, contacto: {} };
+let siteContentSha = null;
+
+const DEFAULT_SITE_CONTENT = {
+  home: {
+    heroEyebrow: "Exclusividad bajo la luna",
+    heroLead: "En BlueMoon creamos joyas en oro, bisutería fina y piezas sobre pedido, y seleccionamos los perfumes más exclusivos y famosos del mundo para ti.",
+    categoryJoyasImage: "images/placeholder-ring.svg",
+    categoryJoyasText: "Oro 10k, 14k y 18k, bisutería fina bañada en oro, y diseños sobre pedido hechos a tu medida.",
+    categoryPerfumesImage: "images/placeholder-perfume.svg",
+    categoryPerfumesText: "Una selección curada de los perfumes originales más famosos y exclusivos, de diseñador y de nicho de lujo.",
+    stat1Number: "100%", stat1Label: "Perfumes originales garantizados",
+    stat2Number: "18k", stat2Label: "Oro de la más alta calidad",
+    stat3Number: "1:1", stat3Label: "Diseños personalizados sobre pedido"
+  },
+  nosotros: {
+    heroEyebrow: "Nuestra historia",
+    aboutEyebrow: "Quiénes somos",
+    aboutHeading: "Nacimos para reunir dos pasiones: la joyería y la perfumería fina",
+    aboutText: "BlueMoon es una marca dedicada a la venta de joyas en oro y perfumes originales de las casas más exclusivas del mundo. Trabajamos con oro de alta calidad, ofrecemos bisutería fina bañada en oro y diseñamos piezas sobre pedido para quienes buscan algo verdaderamente único.",
+    aboutImage: "images/logo-bluemoon.png",
+    aboutLocation: "Medellín, Colombia",
+    value1Title: "Autenticidad", value1Text: "Perfumes 100% originales y oro con su respectivo respaldo de calidad.",
+    value2Title: "Exclusividad", value2Text: "Seleccionamos cuidadosamente cada pieza y cada fragancia de nuestro catálogo.",
+    value3Title: "Atención personalizada", value3Text: "Te acompañamos desde la idea hasta la entrega, incluso en diseños sobre pedido.",
+    commitmentEyebrow: "Nuestro compromiso",
+    commitmentHeading: "Contigo, en cada detalle",
+    commitmentText: "Ya sea una joya que se convierta en herencia familiar o el perfume que se vuelva tu firma personal, en BlueMoon cuidamos cada detalle para que sea perfecto."
+  },
+  contacto: {
+    heroEyebrow: "Hablemos",
+    heroTitle: "Cuéntanos qué estás buscando",
+    heroLead: "Ya sea una joya sobre pedido o el perfume perfecto, respondemos rápido por WhatsApp.",
+    faq1Q: "¿Cómo hago un pedido?",
+    faq1A: "Agrega los productos que quieras al carrito o escríbenos directo por WhatsApp desde cualquier página. Confirmamos disponibilidad, precio final y forma de pago contigo antes de cerrar el pedido.",
+    faq2Q: "¿Qué métodos de pago aceptan?",
+    faq2A: "Transferencia bancaria, Nequi, Daviplata y efectivo. Coordinamos el método exacto contigo por WhatsApp al confirmar tu pedido.",
+    faq3Q: "¿Cuánto tardan las piezas sobre pedido?",
+    faq3A: "Depende de la complejidad del diseño; te damos un tiempo estimado apenas conversemos sobre tu idea por WhatsApp.",
+    faq4Q: "¿Los perfumes son 100% originales?",
+    faq4A: "Sí. Todos nuestros perfumes se adquieren directamente de distribuidores autorizados — nunca vendemos imitaciones ni \"inspirados en\".",
+    faq5Q: "¿Tienen garantía o política de cambios?",
+    faq5A: "Sí, escríbenos por WhatsApp dentro de los primeros días después de recibir tu pedido si algo no está bien y lo resolvemos juntos."
+  }
+};
+
+const PAGE_LABELS = { home: "Inicio", nosotros: "Nosotros", contacto: "Contacto" };
+
+const CONTENT_SCHEMA = {
+  home: [
+    { key: "heroEyebrow", type: "text", label: "Frase pequeña del encabezado" },
+    { key: "heroLead", type: "textarea", label: "Texto descriptivo del encabezado" },
+    { key: "categoryJoyasImage", type: "image", label: "Imagen — tarjeta Joyas" },
+    { key: "categoryJoyasText", type: "textarea", label: "Texto — tarjeta Joyas" },
+    { key: "categoryPerfumesImage", type: "image", label: "Imagen — tarjeta Perfumes" },
+    { key: "categoryPerfumesText", type: "textarea", label: "Texto — tarjeta Perfumes" },
+    { key: "stat1Number", type: "text", label: "Cifra 1" },
+    { key: "stat1Label", type: "text", label: "Texto de la cifra 1" },
+    { key: "stat2Number", type: "text", label: "Cifra 2" },
+    { key: "stat2Label", type: "text", label: "Texto de la cifra 2" },
+    { key: "stat3Number", type: "text", label: "Cifra 3" },
+    { key: "stat3Label", type: "text", label: "Texto de la cifra 3" }
+  ],
+  nosotros: [
+    { key: "heroEyebrow", type: "text", label: "Frase pequeña del encabezado" },
+    { key: "aboutEyebrow", type: "text", label: "Frase pequeña — Quiénes somos" },
+    { key: "aboutHeading", type: "text", label: "Título — Quiénes somos" },
+    { key: "aboutText", type: "textarea", label: "Texto — Quiénes somos" },
+    { key: "aboutImage", type: "image", label: "Imagen — Quiénes somos" },
+    { key: "aboutLocation", type: "text", label: "Ubicación" },
+    { key: "value1Title", type: "text", label: "Valor 1 — título" },
+    { key: "value1Text", type: "textarea", label: "Valor 1 — texto" },
+    { key: "value2Title", type: "text", label: "Valor 2 — título" },
+    { key: "value2Text", type: "textarea", label: "Valor 2 — texto" },
+    { key: "value3Title", type: "text", label: "Valor 3 — título" },
+    { key: "value3Text", type: "textarea", label: "Valor 3 — texto" },
+    { key: "commitmentEyebrow", type: "text", label: "Frase pequeña — Compromiso" },
+    { key: "commitmentHeading", type: "text", label: "Título — Compromiso" },
+    { key: "commitmentText", type: "textarea", label: "Texto — Compromiso" }
+  ],
+  contacto: [
+    { key: "heroEyebrow", type: "text", label: "Frase pequeña del encabezado" },
+    { key: "heroTitle", type: "text", label: "Título del encabezado" },
+    { key: "heroLead", type: "textarea", label: "Texto descriptivo del encabezado" },
+    { key: "faq1Q", type: "text", label: "Pregunta 1" }, { key: "faq1A", type: "textarea", label: "Respuesta 1" },
+    { key: "faq2Q", type: "text", label: "Pregunta 2" }, { key: "faq2A", type: "textarea", label: "Respuesta 2" },
+    { key: "faq3Q", type: "text", label: "Pregunta 3" }, { key: "faq3A", type: "textarea", label: "Respuesta 3" },
+    { key: "faq4Q", type: "text", label: "Pregunta 4" }, { key: "faq4A", type: "textarea", label: "Respuesta 4" },
+    { key: "faq5Q", type: "text", label: "Pregunta 5" }, { key: "faq5A", type: "textarea", label: "Respuesta 5" }
+  ]
+};
+
+const CONTENT_IMAGE_PATHS = {
+  "home.categoryJoyasImage": "images/site-home-joyas.jpg",
+  "home.categoryPerfumesImage": "images/site-home-perfumes.jpg",
+  "nosotros.aboutImage": "images/site-nosotros-about.jpg"
+};
+
 const CATEGORY_OPTIONS = {
   jewelry: [
     { value: "oro", label: "Oro" },
@@ -359,15 +482,38 @@ function populateCategorySelect() {
 
 function switchType(type) {
   currentType = type;
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.type === type));
+  document.querySelectorAll(".tab-btn[data-type]").forEach(b => b.classList.toggle("active", b.dataset.type === type));
   document.getElementById("brand-row").style.display = type === "perfume" ? "grid" : "none";
   populateCategorySelect();
 }
 
-document.querySelectorAll(".tab-btn").forEach(btn => {
+document.querySelectorAll(".tab-btn[data-type]").forEach(btn => {
   btn.addEventListener("click", () => { if (!editingId) switchType(btn.dataset.type); });
 });
 switchType("jewelry");
+
+/* ============================================================
+   PESTAÑAS PRINCIPALES: Catálogo <-> Contenido del sitio
+   ============================================================ */
+function switchMainTab(tab) {
+  document.getElementById("form-card").style.display = tab === "catalog" ? "block" : "none";
+  document.getElementById("list-card").style.display = tab === "catalog" ? "block" : "none";
+  document.getElementById("panel-content").style.display = tab === "content" ? "block" : "none";
+  document.querySelectorAll(".main-tab-btn").forEach(b => b.classList.toggle("active", b.dataset.maintab === tab));
+}
+document.querySelectorAll(".main-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => switchMainTab(btn.dataset.maintab));
+});
+
+function switchContentTab(tab) {
+  ["home", "nosotros", "contacto", "info"].forEach(t => {
+    document.getElementById("content-" + t).style.display = t === tab ? "block" : "none";
+  });
+  document.querySelectorAll(".content-tab-btn").forEach(b => b.classList.toggle("active", b.dataset.ctab === tab));
+}
+document.querySelectorAll(".content-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => switchContentTab(btn.dataset.ctab));
+});
 
 document.getElementById("f-image").addEventListener("change", (e) => {
   const file = e.target.files[0];
@@ -400,9 +546,10 @@ document.getElementById("btn-connect").addEventListener("click", async () => {
     catalog = JSON.parse(base64ToUtf8(file.content));
     catalogSha = file.sha;
     setConnected(true, "Conectado a " + cfg.repo + " (" + cfg.branch + ") — catálogo cargado.");
-    document.getElementById("form-card").style.display = "block";
-    document.getElementById("list-card").style.display = "block";
+    document.getElementById("main-tabs").style.display = "flex";
+    switchMainTab("catalog");
     renderProductList();
+    await loadSiteContentAndRender(owner, repo, cfg);
   } catch (err) {
     setConnected(false, "No se pudo conectar.");
     toast(err.message, "err");
@@ -585,6 +732,176 @@ document.getElementById("btn-save").addEventListener("click", async () => {
     btn.textContent = editingId ? "Guardar cambios" : "Publicar producto";
   }
 });
+
+/* ============================================================
+   CONTENIDO DE PÁGINAS (Inicio, Nosotros, Contacto)
+   ============================================================ */
+function fieldId(section, key) { return "sc-" + section + "-" + key; }
+
+async function loadSiteContentAndRender(owner, repo, cfg) {
+  try {
+    const file = await ghGetFile(owner, repo, "data/site-content.json", cfg.token, cfg.branch);
+    siteContent = file ? JSON.parse(base64ToUtf8(file.content)) : JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT));
+    siteContentSha = file ? file.sha : null;
+  } catch (e) {
+    siteContent = JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT));
+    siteContentSha = null;
+  }
+  ["home", "nosotros", "contacto"].forEach(section => {
+    renderContentSection(section);
+    fillContentForm(section);
+  });
+  renderContactInfoForm();
+}
+
+function renderContentSection(section) {
+  const schema = CONTENT_SCHEMA[section];
+  const container = document.getElementById("content-" + section);
+  container.innerHTML = schema.map(f => {
+    const id = fieldId(section, f.key);
+    if (f.type === "image") {
+      return '<label>' + f.label + '</label>' +
+        '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px;">' +
+        '<img id="' + id + '-preview" class="preview-img" style="display:none;max-width:100px;max-height:100px;margin-bottom:0;">' +
+        '<input type="file" id="' + id + '-file" accept="image/*" style="margin-bottom:0;">' +
+        '</div>';
+    }
+    if (f.type === "textarea") {
+      return '<label for="' + id + '">' + f.label + '</label><textarea id="' + id + '"></textarea>';
+    }
+    return '<label for="' + id + '">' + f.label + '</label><input type="text" id="' + id + '">';
+  }).join("") + '<button type="button" class="btn btn-gold" id="btn-save-' + section + '">Publicar cambios en ' + PAGE_LABELS[section] + '</button>';
+
+  document.getElementById("btn-save-" + section).addEventListener("click", () => saveContentSection(section));
+
+  schema.filter(f => f.type === "image").forEach(f => {
+    const fileInput = document.getElementById(fieldId(section, f.key) + "-file");
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const preview = document.getElementById(fieldId(section, f.key) + "-preview");
+      const reader = new FileReader();
+      reader.onload = (ev) => { preview.src = ev.target.result; preview.style.display = "block"; };
+      reader.readAsDataURL(file);
+    });
+  });
+}
+
+function fillContentForm(section) {
+  const schema = CONTENT_SCHEMA[section];
+  const data = siteContent[section] || {};
+  schema.forEach(f => {
+    const id = fieldId(section, f.key);
+    if (f.type === "image") {
+      const preview = document.getElementById(id + "-preview");
+      if (data[f.key]) { preview.src = data[f.key]; preview.style.display = "block"; }
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.value = data[f.key] || "";
+    }
+  });
+}
+
+async function saveContentSection(section) {
+  const cfg = getCfg();
+  if (!cfg.token) { toast("Conéctate primero con tu token de GitHub.", "err"); return; }
+  const [owner, repo] = cfg.repo.split("/");
+  const btn = document.getElementById("btn-save-" + section);
+  btn.disabled = true;
+  const originalLabel = btn.textContent;
+  btn.textContent = "Publicando...";
+
+  try {
+    const fresh = await ghGetFile(owner, repo, "data/site-content.json", cfg.token, cfg.branch);
+    const freshContent = fresh ? JSON.parse(base64ToUtf8(fresh.content)) : JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT));
+    siteContentSha = fresh ? fresh.sha : null;
+    if (!freshContent[section]) freshContent[section] = {};
+
+    const schema = CONTENT_SCHEMA[section];
+    for (const f of schema) {
+      const id = fieldId(section, f.key);
+      if (f.type === "image") {
+        const fileInput = document.getElementById(id + "-file");
+        const file = fileInput.files[0];
+        if (file) {
+          btn.textContent = "Subiendo imagen...";
+          const base64Img = await resizeImageFile(file, 1000);
+          const imgPath = CONTENT_IMAGE_PATHS[section + "." + f.key] || ("images/site-" + section + "-" + slugify(f.key) + ".jpg");
+          const existingImg = await ghGetFile(owner, repo, imgPath, cfg.token, cfg.branch);
+          await ghPutFile(owner, repo, imgPath, cfg.token, cfg.branch, base64Img, "Actualizar imagen: " + f.label, existingImg ? existingImg.sha : null);
+          freshContent[section][f.key] = imgPath;
+        }
+      } else {
+        const el = document.getElementById(id);
+        freshContent[section][f.key] = el.value.trim();
+      }
+    }
+
+    btn.textContent = "Guardando...";
+    const newContentBase64 = utf8ToBase64(JSON.stringify(freshContent, null, 2));
+    const result = await ghPutFile(owner, repo, "data/site-content.json", cfg.token, cfg.branch, newContentBase64, "Actualizar contenido: " + PAGE_LABELS[section], siteContentSha);
+    siteContentSha = result.content.sha;
+    siteContent = freshContent;
+    fillContentForm(section);
+    toast("Contenido de " + PAGE_LABELS[section] + " actualizado. Puede tardar uno o dos minutos en verse en el sitio.", "ok");
+  } catch (err) {
+    toast(err.message, "err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  }
+}
+
+function renderContactInfoForm() {
+  const container = document.getElementById("content-info");
+  container.innerHTML =
+    '<label for="ci-whatsapp">Número de WhatsApp (solo números, con código de país. Ej: 573105086397)</label>' +
+    '<input type="text" id="ci-whatsapp">' +
+    '<label for="ci-email">Correo de contacto</label>' +
+    '<input type="text" id="ci-email">' +
+    '<label for="ci-city">Ciudad</label>' +
+    '<input type="text" id="ci-city">' +
+    '<label for="ci-tiktok">Link de TikTok</label>' +
+    '<input type="text" id="ci-tiktok">' +
+    '<button type="button" class="btn btn-gold" id="btn-save-info">Publicar datos de contacto</button>';
+
+  const c = catalog.contact || {};
+  document.getElementById("ci-whatsapp").value = c.whatsappNumber || "";
+  document.getElementById("ci-email").value = c.email || "";
+  document.getElementById("ci-city").value = c.city || "";
+  document.getElementById("ci-tiktok").value = c.tiktok || "";
+  document.getElementById("btn-save-info").addEventListener("click", saveContactInfo);
+}
+
+async function saveContactInfo() {
+  const cfg = getCfg();
+  if (!cfg.token) { toast("Conéctate primero con tu token de GitHub.", "err"); return; }
+  const [owner, repo] = cfg.repo.split("/");
+  const btn = document.getElementById("btn-save-info");
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = "Publicando...";
+  try {
+    const fresh = await ghGetFile(owner, repo, "data/products.json", cfg.token, cfg.branch);
+    catalog = JSON.parse(base64ToUtf8(fresh.content));
+    catalogSha = fresh.sha;
+    catalog.contact = {
+      whatsappNumber: document.getElementById("ci-whatsapp").value.trim(),
+      email: document.getElementById("ci-email").value.trim(),
+      city: document.getElementById("ci-city").value.trim(),
+      tiktok: document.getElementById("ci-tiktok").value.trim()
+    };
+    const newContentBase64 = utf8ToBase64(JSON.stringify(catalog, null, 2));
+    const result = await ghPutFile(owner, repo, "data/products.json", cfg.token, cfg.branch, newContentBase64, "Actualizar datos de contacto", catalogSha);
+    catalogSha = result.content.sha;
+    toast("Datos de contacto actualizados. Puede tardar uno o dos minutos en verse en el sitio.", "ok");
+  } catch (err) {
+    toast(err.message, "err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
 
 /* ============================================================
    ELIMINAR PRODUCTO

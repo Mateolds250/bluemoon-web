@@ -319,14 +319,14 @@
     {
       "id": "chanel-bleu",
       "category": "el",
-      "brand": "Chanel",
       "nameEs": "Bleu de Chanel",
       "nameEn": "Bleu de Chanel",
       "descEs": "El referente del perfume azul: cítricos, jengibre y sándalo.",
       "descEn": "The benchmark blue fragrance: citrus, ginger and sandalwood.",
       "price": "Consultar disponibilidad",
-      "image": "images/placeholder-perfume.svg",
-      "badge": "Icónico"
+      "image": "images/chanel-bleu.jpg",
+      "badge": "Icónico",
+      "brand": "Chanel"
     },
     {
       "id": "armani-acqua-di-gio",

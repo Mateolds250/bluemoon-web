@@ -66,6 +66,34 @@ function initScrollReveal(selector) {
   });
 }
 
+/* ============================================================
+   Contenido editable de páginas (Inicio, Nosotros, Contacto)
+   Aplica lo que haya en data/site-content.json (cargado en
+   products.js como SITE_CONTENT) sobre el texto/imágenes que ya
+   están escritos en el HTML. Si falta el archivo, un campo está
+   vacío, o algo falla, esa parte simplemente se queda con el
+   texto de siempre — nunca se rompe ni se vacía la página.
+   ============================================================ */
+function applySiteContent(pageKey, fieldMap) {
+  try {
+    const content = (typeof SITE_CONTENT !== "undefined" && SITE_CONTENT[pageKey]) || null;
+    if (!content) return;
+    Object.keys(fieldMap).forEach(elId => {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const rawKey = fieldMap[elId];
+      const isImage = rawKey.slice(-4) === ":img";
+      const key = isImage ? rawKey.slice(0, -4) : rawKey;
+      const value = content[key];
+      if (!value) return;
+      if (isImage) el.setAttribute("src", value);
+      else el.textContent = value;
+    });
+  } catch (e) {
+    console.error("No se pudo aplicar el contenido editable de la página:", e);
+  }
+}
+
 /* ---------- Menú móvil ---------- */
 function initMobileNav() {
   const toggle = document.querySelector(".nav-toggle");
